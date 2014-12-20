@@ -1,0 +1,23 @@
+<link rel="import"
+      href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="test-person">
+    <template>
+        Hello World {{age}} {{name}} {{nameChanged()}}
+    </template>
+    <script>
+        Polymer({
+            age: 25,
+            name: "Daniel",
+            color: "red",
+            owner: "Eric",
+            nameChanged: function() {
+                if (this.name) {
+                    // Ensure name is capitalized
+                    this.name = this.name[0].toUpperCase() +
+                    this.name.slice(1);
+                }
+            }
+        });
+    </script>
+</polymer-element>
