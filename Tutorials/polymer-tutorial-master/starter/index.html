@@ -12,6 +12,9 @@
   </script>
 
   <link rel="import" href="../components/font-roboto/roboto.html">
+  <link rel="import" href="../components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="../components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="../components/paper-tabs/paper-tabs.html">
 
   <style>
   html,body {
@@ -24,9 +27,30 @@
     width: 80%;
     margin: 50px auto;
   }
+
+  core-header-panel {
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  core-toolbar   {
+    background: #03a9f4;
+    color: white;
+  }
+  #tabs {
+    width: 100%;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: uppercase;
+  }
+
+
   @media (min-width: 481px) {
     #tabs {
-      width: 200px;
+      width: 300px;
     }
     .container {
       width: 400px;
@@ -34,10 +58,35 @@
   }
   </style>
 
+
+
 </head>
 
 <body unresolved>
 
+<core-header-panel>
+
+  <core-toolbar>
+
+    <paper-tabs id="tabs" selected="all" self-end>
+      <paper-tab name="all">All</paper-tab>
+      <paper-tab name="favorites">Favorites</paper-tab>
+      <paper-tab name="derp">derp</paper-tab>
+    </paper-tabs>
+
+  </core-toolbar>
+
+  <!-- main page content will go here -->
+
+</core-header-panel>
+
 </body>
+<script>
+  var tabs = document.querySelector('paper-tabs');
+
+  tabs.addEventListener('core-select', function() {
+    console.log("Selected: " + tabs.selected);
+  });
+</script>
 
 </html>
